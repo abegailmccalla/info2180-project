@@ -1,0 +1,117 @@
+body{
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.person, .notes{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.basic_info {
+    display: grid;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: black;
+    grid-template-columns: auto auto; 
+    gap: 10px; 
+}
+
+.basic_info .label {
+    font-weight: bold;
+}
+
+
+.person, .notes{
+    h1, h2, h3{
+        color: rgb(129, 159, 224);
+        text-align: center;
+    }
+}
+
+.intro, .note_header {
+    display: flex;
+    align-items: center; 
+}
+
+.intro img, .note_header img {
+    margin-right: 10px; 
+}
+
+.contact-description{
+    background-color: black;
+    margin-top: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+#notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: rgb(129, 159, 224);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+    z-index: 9999;
+}
+
+#notification.error {
+    background-color: #ffdddd;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+}
+
+
+table{
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse; 
+    border-spacing: 0; 
+    border-radius: 5px;
+}
+    th{
+        background-color: black;
+        color: rgb(129, 159, 224);
+        font-weight: bold;
+        font-style: italic;
+    }
+    th, td {
+        border: 1px solid rgb(129, 159, 224);
+        padding: 10px;
+        color: rgb(129, 159, 224);
+    }
+
+
+    button{
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: 1px solid rgb(129, 159, 224);
+        background-color: black;
+        color: rgb(129, 159, 224);
+        font-weight: bold;
+        width: fit-content;
+    }
+    button:hover{
+        background-color: rgb(129, 159, 224);
+        cursor: pointer;
+    }
+
+textarea{
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid rgb(129, 159, 224);
+    padding: 5px;
+    resize: none;
+}

@@ -1,0 +1,107 @@
+header 
+{ 
+    background-color: #000000; /* Dark blue background */ 
+    padding: 10px; 
+    display: flex; 
+    align-items: center; 
+} 
+
+
+header h1 
+{ 
+    color:  rgb(129, 159, 224); 
+    font-family: Arial, sans-serif; 
+    font-size: 15px; margin: 0; 
+}
+
+header img 
+{ 
+    width: 50px; /* Adjust the size of the dolphin icon */ 
+    margin-right: 10px; 
+}
+
+form label{
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: left;
+}
+
+main
+{
+    text-align: center;
+}
+
+main h2
+{
+    color:  rgb(129, 159, 224); 
+    font-size: 45px;
+}
+
+form{
+    width: 80%;
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width:80%;
+}
+
+form input{
+    padding: 5px;
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid rgb(129, 159, 224);
+    color:rgb(129, 159, 224);
+}
+
+main button{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid rgb(129, 159, 224);
+    background-color: black;
+    color: rgb(129, 159, 224);
+    font-weight: bold;
+    width: fit-content;
+    display: flex; 
+    text-align: center;
+}
+
+button:hover{
+    background-color: rgb(129, 159, 224);
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 120px;
+    right: 30px;
+    /*transform: translate(-50%, -50%);
+    */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: black;
+    color: rgb(129, 159, 224);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+main img
+{
+    align-items: center;
+}
+
+footer{
+    display: flex;
+    margin-top: 10px;
+    color: rgb(129, 159, 224);
+    font-weight: bold;
+    background-color: black;
+    padding: 10px 20px;
+    align-items: center;
+    border-radius: 5px;
+}
+
+
