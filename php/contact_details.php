@@ -223,32 +223,30 @@ function assignContactToCurrentUser($contactId, $current_user) {
     <div class = "contact-description">
         <div class = "intro">
             <img src = "../images/user.png" alt= "person icon" width="50px">
-            <h2><?php echo $contactDetails['title'] . ' ' . $contactDetails['firstname'] . ' ' . $contactDetails['lastname']; ?></h2>
+            <h2><?php echo $contactDetails['title'] . ' ' . $contactDetails['firstname'] . ' ' . $contactDetails['lastname']; ?></h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" name="assign_to_me">Assign To Me</button> &nbsp; &nbsp;
+            <button id="switchRoleBtn" onclick="switchRole()">Switch Role </button>
         </div>
-        <button type="submit" name="assign_to_me">Assign To Me</button>
-        <button id="switchRoleBtn" onclick="switchRole()"> Switch Role </button>
-        <p> Created on <?php echo (new DateTime($contactDetails['created_at']))->format('F j, Y'); ?></p>
+        <p> Created on <?php echo (new DateTime($contactDetails['created_at']))->format('F j, Y'); ?> by Tara Henry</p>
         <p> Updated on <?php echo formatDateTime($contactDetails['updated_at'], $contactDetails['created_at']); ?></p>
+        
     </div>
 
-    <div class = "basic_info">
-        <p class = label> Email </p>
-        <p><?php echo $contactDetails['email']; ?></p>
+    <div class = "basic_info" style="border: 2px solid rgb(129, 159, 224); padding: 10px; margin: 10px;">
+        <p class = label> Email: &nbsp; <?php echo $contactDetails['email']; ?></p>
 
-        <p class = label> Telephone </p>
-        <p><?php echo $contactDetails['telephone']; ?></p>
+        <p class = label> Telephone: &nbsp; <?php echo $contactDetails['telephone']; ?></p> 
 
-        <p class = label> Company </p>
-        <p><?php echo $contactDetails['company']; ?></p>
+        <p class = label> Company: &nbsp; <?php echo $contactDetails['company']; ?></p>
 
-        <p class = label> Assigned To </p>
-        <p><?php echo $contactDetails['assigned_firstname'] . ' ' . $contactDetails['assigned_lastname']; ?></p>
-
+        <p class = label> Assigned To: &nbsp; <?php echo $contactDetails['assigned_firstname'] . ' ' . $contactDetails['assigned_lastname']; ?></p>
     </div>
     <div class="notes">
+        <br>
         <div class = "note_header">
-            <h2><img src="../images/notes.jpg" alt="notes icon" width="50px"> Notes</h2>
+            <h2 style="font-size: 50px;"><img src="../images/notes.jpg" alt="notes icon" width="70px"> Notes</h2>
         </div>
+        <br><br>
         <?php
         $contactNotes = fetchNotesForContact($contactId);
         foreach ($contactNotes as $note) {
@@ -260,6 +258,7 @@ function assignContactToCurrentUser($contactId, $current_user) {
             echo '</div>';
         }
         ?>
+        <br><br>
         <div class="note">
             <h3>Add a note about <?php echo $contactDetails['firstname'] ?></h3>
             <form action="contact_details.php?id=<?php echo $contactId; ?>" method="post">
