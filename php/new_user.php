@@ -25,6 +25,33 @@ if ($conn->connect_error) {
     die("Failed to connect: " . $conn->connect_error);
 }
 
+// Only roles allowed Admin or Member
+try{
+    if (preg_match('/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/', $password)) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    }
+}catch{
+    die("<script> alert('Password does not meet these requirements: password must have atleast one number, one letter, one capital letter and must be atleast 8 characters long.'); window.close(); window.open('../pages/new_user.html', '_blank'); </script>");
+}
+
+
+
+// } else {
+//     //header("Location: ../php/dashboard.php");
+    
+//     //die("Password does not meet these requirements: password must have atleast one number, one letter, one capital letter and must be atleast 8 characters long.");
+//     // Redirect to another page 
+    
+//     //exit; // Ensure no further code is executed
+// }
+
+
+// Only roles allowed Admin or Member
+if ($role_filter !== 'Admin' && $role_filter !== 'Member') {
+    die("Invalid role selected.");
+}
+
+
 $sql = "INSERT INTO Users (firstname, lastname, email, pwd, _role) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
