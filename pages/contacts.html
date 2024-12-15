@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/contacts.css">
+    <script src="../script/contacts.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Contact</title>
+</head>
+
+<header>
+    <?php 
+        include '../php/header.php';
+        session_start();
+    ?>
+</header>
+
+<body>
+
+    <div class="contact">
+        <h1>New Contact</h1>
+
+        <form id="contacts-form">
+            
+            <label for="title">Title</label>
+            <select id="title" name="title" required>
+                <option value=""></option>
+                <option value="Mr">Mr</option>
+                <option value="Ms">Ms</option>
+                <option value="Mrs">Mrs</option>
+            </select>
+            <br>  
+
+            <label for="Fname">First Name</label>
+            <input type="text" name="fname" id="first_name" placeholder="First Name" required>
+            <br>
+        
+            <label for="Lname">Last Name</label>
+            <input type="text" name="lname" id="last_name" placeholder="Last Name" required>
+            <br>
+
+
+            <label for="Email">Email</label>
+            <input type="email" name="email" id="email_address" placeholder="something@example.com" required>
+            <br>
+
+
+            <label for="Telephone">Telephone  (Format: 876-123-4567)</label>
+            <input type="tel" name="t_phone" id="telephone_num" placeholder="876-123-4567" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            <br>
+
+            <label for="Company">Company</label>
+            <input type="text" name="company" id="company" placeholder="Gace Bennedy" required>
+            <br>
+
+            <label for="Type">Type</label>
+            <select id="type" name="type" required>
+                <option value=""></option>
+                <option value="Sales Lead">Sales Lead</option>
+                <option value="Support">Support</option>
+            </select>
+
+            <br>
+            <label for="Assigned">Assigned To</label>
+            <select id="assign_user" name="assign_user" required></select>
+
+            <br>
+            <button type="button" name="submit" value="Submit" onclick="submitForm()">Submit</button>
+        </form>
+        <div id="text" class="popup">
+            <p id="result"></p>
+        </div>
+    </div>
+    <script>
+        function submitForm() {
+            // Get form data
+            var formData = $("#contacts-form").serialize();
+            $.ajax({
+                type: "POST",
+                url: "../php/contacts.php", // Specify your PHP processing file
+                data: formData,
+                success: function(response) {
+                    // Handle the response from the server
+                    $("#result").html(response);
+                    var textresult = document.getElementById('result').innerHTML;
+                    document.getElementById('text').style.display = 'block';
+                    loadPage(textresult);
+                },
+                error: function(error) {
+                    console.log(error);
+                    $("#result").html("An error occurred during form submission.");
+                }
+            });
+
+        function loadPage(response) {
+            setTimeout(function() {
+                switch (response) {
+                    case "Contact Added Successfully!":
+                        window.location.assign('../php/dashboard.php');
+                        break;
+                    case "Error Adding User!":
+                        window.location.assign('contacts.html');
+                        break;
+                    }
+        },2000);}}
+        </script>
+
+</body>
+
+</html>

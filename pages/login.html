@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Dolphin CRM</title>
+</head>
+<!-- <header>
+    <?php include '../php/login_header.php'?>
+</header> -->
+<body id="content">
+    <header>
+        <img src="../images/dol2.png" alt="Dark Blue dolphin image">
+        <h1>Dolphin CRM</h1>
+    </header>
+    <main>
+        <h2>Login</h2>
+        <div class="container">
+            <form id="login-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button type="button" onclick="submitForm()">Login</button>
+            </form>
+            <br>
+            <img src="../images/dol1.png" alt="Light Blue dolphin image">
+        </div>
+        <div id="text" class="popup">
+            <p id="result"></p>
+        </div>
+    </main>
+    
+    <script>
+        function submitForm() {
+            // Get form data
+            var formData = $("#login-form").serialize();
+            $.ajax({
+                type: "POST",
+                url: "../php/login.php", // Specify your PHP processing file
+                data: formData,
+                success: function(response) {
+                    // Handle the response from the server
+                    $("#result").html(response);
+                    document.getElementById('text').style.display = 'block';
+                    var textresult = document.getElementById('result').innerHTML;
+                    loadPage(textresult);
+                },
+                error: function(error) {
+                    console.log(error);
+                    $("#result").html("An error occurred during form submission.");
+                }
+            });
+
+            function loadPage(response) {
+                setTimeout(function() {
+                    switch (response) {
+                        case "Login Successfully!":
+                            window.location.assign('../php/dashboard.php');
+                            break;
+                        case "Restricted Access. Go Back!":
+                            window.location.assign('login.html');
+                            break;
+                        case "Invalid Password!":
+                            window.location.assign('login.html');
+                            break;
+                        case "Invalid Email!":
+                            window.location.assign('login.html');
+                            break;
+                    }
+                }, 2000);
+            }
+        }
+    </script>
+<footer> Copyright &copy 2024 Dolphin CRM</footer>
+</body>
+</html>
